@@ -39,6 +39,9 @@
             if($value > $weight) {
                 $winner = $emotion;
                 $weight = $value;
+            } else if ( $value == $weight ) {
+                $winner = 7;
+                break;
             }
         }
 
