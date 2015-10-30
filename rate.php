@@ -16,7 +16,7 @@
     $user = $configs['user'];
     $pass = $configs['password'];
     $db = new PDO("mysql:host=$host;dbname=Analysis;charset=utf8", $user, $pass);
-    $result = $db->query('SELECT row_id, neutral, happy, sad, fear, anger, disgust, surprise from Top10');
+    $result = $db->query('SELECT row_id, neutral, happy, sad, fear, anger, disgust, surprise from Random');
     while( $row = $result->fetch(PDO::FETCH_ASSOC))
     {
         $id = $row['row_id'];
@@ -46,7 +46,7 @@
         }
 
         echo "Row $id is a $winner with a weight of $weight.\n";
-        $db->exec("UPDATE Top10 set primary_emotion=$winner where row_id=$id");
+        $db->exec("UPDATE Random set primary_emotion=$winner where row_id=$id");
     }
 
  echo "Done!";

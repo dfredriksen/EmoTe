@@ -17,7 +17,7 @@
     $pass = $configs['password'];
     $Empathyscope = Eklekt_Emotion_Empathyscope::getInstance();
     $db = new PDO("mysql:host=$host;dbname=Analysis;charset=utf8", $user, $pass);
-    $result = $db->query('SELECT row_id, headline, teaser from Top10');
+    $result = $db->query('SELECT row_id, headline, teaser from Random');
     while( $row = $result->fetch(PDO::FETCH_ASSOC))
     {
         $emotions = array(
@@ -40,7 +40,7 @@
             $emotions[$emotion->type] = $emotion->weight;
         }
 
-        $db->exec("UPDATE Top10 set 
+        $db->exec("UPDATE Random set 
             neutral=" . $emotions['-1'] .",
             happy=" . $emotions[0] . ",
             sad=" . $emotions[1] . ",
